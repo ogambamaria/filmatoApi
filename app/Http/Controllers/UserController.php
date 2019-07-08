@@ -3,7 +3,9 @@ namespace App\Http\Controllers;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
+use Illuminate\Support\Str;
 use App\User;
+
 class UserController extends Controller
 {
     public function register(Request $request)
@@ -29,7 +31,7 @@ class UserController extends Controller
                 'name'=> $name,
                 'email'=> $email,
                 'password'=> $password,
-                'api_token'=> ''
+                'api_token'=> Str::random(60),
             ]);
             $res['status'] = true;
             $res['message'] = 'Registration success!';
