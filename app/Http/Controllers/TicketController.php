@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\ValidationException;
 use App\Ticket;
 
@@ -54,5 +55,21 @@ class TicketController extends Controller
             return response($res, 500);
         }
 
+    }
+    public function getTickets(Request $request){
+        $email  = $request->input('email');
+        $ticket = Ticket::all();
+        if ($ticket){
+            $res['count'] = $ticket->count();
+            $res['status'] = true;
+            $res['message'] = $ticket;
+
+            return response($res);
+        }else{
+            $res['status'] = false;
+            $res['message'] = 'No tickets purchased!';
+
+            return response($res);
+        }
     }
 }

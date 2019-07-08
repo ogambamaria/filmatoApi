@@ -46,20 +46,20 @@ class LoginController extends Controller
                         }
                     } else {
                         $res['success'] = false;
-                        $res['message'] = 'Username / email / password not found';
+                        $res['message'] = 'Email / password not found';
                         return response($res, 401);
                     }
                 } else {
                     $res['success'] = false;
-                    $res['message'] = 'Username / email / password  not found';
+                    $res['message'] = 'Email / password  not found';
                     return response($res, 401);
                 }
             } else {
                 $res['success'] = false;
-                $res['message'] = 'Username / email / password not found';
+                $res['message'] = 'Email / password not found';
                 return response($res, 401);
             }
-        } catch (\Illuminate\Database\QueryException $ex) {
+        } catch (QueryException $ex) {
             $res['success'] = false;
             $res['message'] = $ex->getMessage();
             return response($res, 500);

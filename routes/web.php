@@ -18,4 +18,5 @@ $router->post('/login', 'LoginController@login');
 $router->post('/register', 'UserController@register');
 $router->get('/user', ['middleware' => 'auth', 'uses' =>  'UserController@get_user']);
 $router->post('/ticket', 'TicketController@create');
+$router->get('/myTickets', 'TicketController@getTickets');
 $router->post('/payment', 'PaymentController@create');
